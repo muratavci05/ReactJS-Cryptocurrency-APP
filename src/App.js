@@ -27,7 +27,8 @@ function App() {
       </Routes>
       </Layout>
       </div>
-      <div style={{backgroundColor:"green"}}>
+      <div style={{ color:"white",textAlign:"center", backgroundColor:"#070b34"
+}}>
         <Footer />
       </div>
     </BrowserRouter>

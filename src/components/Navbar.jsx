@@ -3,7 +3,7 @@ import { Avatar, Typography, Menu } from "antd";
 import { Link } from "react-router-dom";
 import icon from "./images/logo.png";
 import { HomeOutlined, FundOutlined, MoneyCollectOutlined, BulbOutlined } from "@ant-design/icons";
- 
+
 const Navbar = () => {
   return (
     <div className="navbarContainer">
