@@ -1,0 +1,18 @@
+.heading {
+
+    margin-top: 20px;
+    margin-left: 270px;
+    margin-right: 10px;
+
+    text-align: left;
+    
+}
+.statisticHeading{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 270px;
+    margin-right: 10px;
+    margin-bottom: 20px;
+   
+}

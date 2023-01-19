@@ -9,6 +9,7 @@ import { Layout } from "antd";
 import Cryptocurrrency from "./components/Cryptocurrrency";
 import Exchanges from "./components/Exchanges";
 import News from "./components/News";
+import "./App.css";
 
 
 function App() {
