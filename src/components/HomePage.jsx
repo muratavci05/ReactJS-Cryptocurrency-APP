@@ -1,12 +1,27 @@
+import React, { useEffect } from 'react'
 import {Row, Statistic, Typography, Col} from 'antd'
-import React from 'react'
 import "./styles/Style.css";
+import axios from 'axios';
 
-
-const {Title} = Typography;
+/* import {useGetCryptosQuery} from "../services/cryptoApi";
+ */const { Title } = Typography;
 
 
 const HomePage = () => {
+
+  /* const { data, isFetching} = useGetCryptosQuery();
+  console.log("data", data); */
+
+  useEffect (()=>{
+    axios
+        .get("https://coinranking1.p.rapidapi.com/coin/Qwsogvtv82FCd/exchanges")
+        .then((res)=>{
+          console.log("responsive",res)})
+        .catch((err)=>{
+          console.log("hata",err)
+        })
+
+  },[]);
   return (
     <div>
       <Title level={2} className="heading">Global Crypto Stats</Title>
