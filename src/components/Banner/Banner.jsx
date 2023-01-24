@@ -1,5 +1,6 @@
 import { makeStyles,Container, Typography } from '@material-ui/core';
 import React from 'react'
+import Carousel from './Carousel';
 
 
 const useStyles = makeStyles (()=> ({
@@ -48,8 +49,10 @@ const Banner = () => {
                         textTransform:"capitalize",
                     }}
                 >
-Get all the Info regarding your favorite crypto Currency                </Typography>
+Get all the Info regarding your favorite crypto Currency
+</Typography>
             </div>
+            <Carousel/>
         </Container>
         </div>
   )
