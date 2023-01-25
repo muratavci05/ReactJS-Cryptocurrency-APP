@@ -6,4 +6,4 @@ const CoinPage = () => {
   )
 }
 
-export default CoinPage
+export default CoinPage;
