@@ -14,14 +14,21 @@ import {
   Table,
   TableRow,
   TableCell,
+  TableBody,
+  makeStyles,
 } from "@material-ui/core";
+import { Classnames } from "react-alice-carousel";
+import { useHistory } from "react-router-dom";
+
+
 
 const CoinsTable = () => {
   const [coins, setCoins] = useState([]);
   const [loading, setLoading] = useState(false);
   const [search, setSearch] = useState("");
+  const history = useHistory();
 
-  const { currency } = CryptoState();
+  const { currency, symbol } = CryptoState();
 
   const fetchCoins = async () => {
     setLoading(true);
@@ -42,6 +49,18 @@ const CoinsTable = () => {
       type: "dark",
     },
   });
+
+  const handleSearch = () => {
+    return coins.filter(
+      (coin) =>
+        coin.name.toLowerCase().includes(search) ||
+        coin.symbol.toLowerCase().includes(search)
+    );
+  };
+
+  const useStyles = makeStyles(() => ({}));
+
+  const classes = useStyles();
   return (
     <ThemeProvider theme={darkTheme}>
       <Container style={{ textAlign: "center" }}>
@@ -64,23 +83,80 @@ const CoinsTable = () => {
             <Table>
               <TableHead style={{ backgroundColor: "#eebc1d" }}>
                 <TableRow>
-                  {[
-                    "Coin", "Price", "24h Change", "Market Cap"].map((head) => (
-                      <TableCell
+                  {["Coin", "Price", "24h Change", "Market Cap"].map((head) => (
+                    <TableCell
                       style={{
-                        color:"black",
+                        color: "black",
                         fontWeght: "700",
                         fontFamily: "Montserrat",
                       }}
                       key={head}
                       align={head === "Coin" ? "" : "right"}
-                      >
-                          {head}
-                      </TableCell>
-                    ))
-                    }
+                    >
+                      {head}
+                    </TableCell>
+                  ))}
                 </TableRow>
               </TableHead>
+              <TableBody>
+                {handleSearch().map((row) => {
+                  const profit = row.price_change_percentage_24h > 0;
+                  return (
+                    <TableRow
+                      onclick={() => history.push(`/coins/${row.id}`)}
+                      className={Classnames.row}
+                      key={row.name}
+                    >
+                      <TableCell
+                        component="th"
+                        scope="row"
+                        sytles={{
+                          display: "flex",
+                          gap: 15,
+                        }}
+                      >
+                        <img
+                          src={row?.image}
+                          alt={row.name}
+                          height="50"
+                          sytle={{ marginBottom: 10 }}
+                        />
+                        <div style={{
+                          display: "flex", flexDirection:"column"
+                        }}>
+                          <span style={{
+                            textTransform:"uppercase",
+                            fontsize:22,
+                          }}>
+                            {row.symbol}
+
+                          </span>
+                          <span style={{color: "darkgrey"}}>
+                            {row.name}
+                          </span>
+
+                        </div>
+                      </TableCell>
+                      <TableCell align="right"
+                      style={{
+                        color: profit > 0 ? "rgb(14,203,129)" : "red",
+                        fontWeght:500,
+                      }}>
+                        {profit && "+"}
+                        {(row.price_change_percentage_24h.toFixed(2))}%
+                      
+                      </TableCell>
+                      
+                      <TableCell align="right">
+                        {symbol}{""}
+                        {numberWithCommas(
+                          row.market_cap.toString().slice(0,-6)
+                        )}
+                      </TableCell>
+                    </TableRow>
+                  );
+                })}
+              </TableBody>
             </Table>
           )}
         </TableContainer>
