@@ -77,8 +77,11 @@ const CoinInfo = ({ coin }) => {
                   let date = new Date(coin[0]);
                   let time =
                     date.getHours() > 12
-                      ? `${date.getHours() - 12}:${date.getMinutes()} PM`
+
+                     // ? `${date.getHours() - 12}:${date.getMinutes()} PM`
+                      ? `${date.getHours()}:${date.getMinutes()} PM`
                       : `${date.getHours()}:${date.getMinutes()} AM`;
+                      
                   return days === 1 ? time : date.toLocaleDateString();
                 }),
 
@@ -86,7 +89,7 @@ const CoinInfo = ({ coin }) => {
                   {
                     data: historicData.map((coin) => coin[1]),
                     label: `Price (Past ${days} Days) in ${currency}`,
-                    borderColor: "#eebc1d",
+                    borderColor: "#FF8B13",
                   },
                 ],
               }}
