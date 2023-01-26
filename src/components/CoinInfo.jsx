@@ -9,7 +9,9 @@ import {
   ThemeProvider,
 } from "@material-ui/core";
 
+import SelectButton from "./SelectButton";
 import { CryptoState } from "../CryptoContext";
+import { chartDays } from "../config/data";
 
 const CoinInfo = ({ coin }) => {
   const [historicData, setHistoricData] = useState();
@@ -78,10 +80,10 @@ const CoinInfo = ({ coin }) => {
                   let time =
                     date.getHours() > 12
 
-                     // ? `${date.getHours() - 12}:${date.getMinutes()} PM`
+                     // ? `${date.getHours() - 12}:${date.getMinutes()} PM`  
                       ? `${date.getHours()}:${date.getMinutes()} PM`
                       : `${date.getHours()}:${date.getMinutes()} AM`;
-                      
+
                   return days === 1 ? time : date.toLocaleDateString();
                 }),
 
@@ -93,7 +95,36 @@ const CoinInfo = ({ coin }) => {
                   },
                 ],
               }}
+              options = {{
+                elements: {
+                    point: {
+                        radius: 1,
+                    },
+                }
+              }}
             />
+            <div
+                style={{
+                    display: "flex",
+                    marginTop: 20,
+                    justifyContent:"speace-around",
+                    width:"100%",
+                    
+                }}
+            >
+                {chartDays.map((day)=> (
+                    <SelectButton
+                   
+                    key={day.value}
+                    onClick={()=>{setDays(day.value);
+                      setflag(false);
+                    }}
+                    selected={day.value === days}
+                    >{day.label}
+
+                    </SelectButton>
+                ))}
+            </div>
           </>
         )}
       </div>
