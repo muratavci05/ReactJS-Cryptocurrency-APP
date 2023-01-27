@@ -24,3 +24,5 @@ export default CryptoContext;
 export const CryptoState = () => {
   return useContext(Crypto);
 };
+
+//version 2
