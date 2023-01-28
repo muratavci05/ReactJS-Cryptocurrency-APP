@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React,{ useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
-import { AppBar, Button, Tab, Tabs } from "@material-ui/core";
+import { Button, Tab, Tabs, AppBar, Box } from "@material-ui/core";
+import Signup from "./Signup";
+import Login from "./Login";
+
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -14,15 +17,16 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     width: 400,
     backgroundColor: theme.palette.background.paper,
-    border: "2px solid #000",
-    boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 4, 3),
+    color: "white",
+    borderRadius: 10,
   },
+ 
 }));
 
 export default function AuthModal() {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
+
 
   const handleOpen = () => {
     setOpen(true);
@@ -33,10 +37,11 @@ export default function AuthModal() {
   };
 
   const [value, setValue] = useState(0);
+
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-  console.log("modal value", value);
+
   return (
     <div>
       <Button
@@ -44,7 +49,8 @@ export default function AuthModal() {
         style={{
           width: 85,
           height: 40,
-          backgroundColor: "#eebc1d",
+          marginLeft: 15,
+          backgroundColor: "#EEBC1D",
         }}
         onClick={handleOpen}
       >
@@ -66,11 +72,14 @@ export default function AuthModal() {
           <div className={classes.paper}>
             <AppBar
               position="static"
-              style={{ backgroundColor: "transparent", color: "white" }}
+              style={{
+                backgroundColor: "transparent",
+                color: "white",
+              }}
             >
               <Tabs
                 value={value}
-                onchange={handleChange}
+                onChange={handleChange}
                 variant="fullWidth"
                 style={{ borderRadius: 10 }}
               >
@@ -78,6 +87,9 @@ export default function AuthModal() {
                 <Tab label="Sign Up" />
               </Tabs>
             </AppBar>
+            {value === 0 && <Login handleClose={handleClose} />}
+            {value === 1 && <Signup handleClose={handleClose} />}
+            
           </div>
         </Fade>
       </Modal>
