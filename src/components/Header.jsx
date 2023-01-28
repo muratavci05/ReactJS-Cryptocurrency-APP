@@ -16,6 +16,7 @@ import {
 } from "@material-ui/core/styles";
 import { CryptoState } from "../CryptoContext.jsx";
 import AuthModal from "./Authentication/AuthModal.jsx";
+import UserSidebar from "./Authentication/UserSidebar.jsx";
 
 const useStyles = makeStyles(() => ({
   title: {
@@ -30,7 +31,7 @@ const useStyles = makeStyles(() => ({
 const Header = () => {
   const classes = useStyles();
   const history = useHistory();
-  const { currency, setCurrency } = CryptoState();
+  const { currency, setCurrency, user } = CryptoState();
 
   const darkTheme = createTheme({
     palette: {
@@ -66,7 +67,7 @@ const Header = () => {
               <MenuItem value={"TRY"}>TRY</MenuItem>
               <MenuItem value={"EUR"}>EUR</MenuItem>
             </Select>
-            <AuthModal />
+            {user ? <UserSidebar/>  : <AuthModal />}
           </Toolbar>
         </Container>
       </AppBar>
