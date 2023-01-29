@@ -1,5 +1,3 @@
-//Temporary drawer >>> https://v4.mui.com/components/drawers/#drawer
-
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
@@ -165,7 +163,7 @@ export default function UserSidebar() {
                     Watchlist
                   </span>
                   {coins.map((coin) => {
-                    //if (watchlist.includes(coin.id))
+                    if (watchlist.includes(coin.id))
                       return (
                         <div className={classes.coin}>
                           <span>{coin.name}</span>
@@ -180,7 +178,7 @@ export default function UserSidebar() {
                           </span>
                         </div>
                       );
-                    //else return <></>;
+                    else return <></>;
                   })}
                 </div>
               </div>

@@ -55,12 +55,14 @@ const Header = () => {
             </Typography>
             <Select
               variant="outlined"
+              labelId="demo-simple-select-label"
+              id="demo-simle-select"
+              value={currency}
               style={{
                 width: 100,
                 height: 40,
                 marginLeft: 15,
               }}
-              value={currency}
               onChange={(event) => setCurrency(event.target.value)}
             >
               <MenuItem value={"USD"}>USD</MenuItem>

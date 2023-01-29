@@ -26,7 +26,6 @@ export function numberWithCommas(x) {
 }
 
 export default function CoinsTable() {
- 
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
 
@@ -59,13 +58,6 @@ export default function CoinsTable() {
       type: "dark",
     },
   });
-
-  
-
-  useEffect(() => {
-    fetchCoins();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currency]);
 
   const handleSearch = () => {
     return coins.filter(
