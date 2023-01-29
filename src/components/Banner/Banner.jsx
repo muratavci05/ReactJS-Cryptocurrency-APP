@@ -20,6 +20,11 @@ const useStyles = makeStyles(() => ({
     justifyContent: "center",
     textAlign: "center",
   },
+  Carousel: {
+    height: "50%",
+    display:"flex",
+    alignItems:"center",
+  }
 }));
 
 const Banner = () => {
