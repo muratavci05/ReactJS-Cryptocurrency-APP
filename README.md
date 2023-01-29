@@ -6,6 +6,13 @@
 
 All technologies used
 
-1- React JS,
-2- React Router Dom,
-3- Axios,
+* 1- React JS,
+* 2- React Router Dom,
+* 3- Axios,
+* 4- Chart JS,
+* 5- Material UI,
+* 6- React Html Parsel,
+* 7- React Google Button,
+* 8- React Alice Carousel,
+
+
