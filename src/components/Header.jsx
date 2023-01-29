@@ -17,6 +17,7 @@ import {
 import { CryptoState } from "../CryptoContext.jsx";
 import AuthModal from "./Authentication/AuthModal.jsx";
 import UserSidebar from "./Authentication/UserSidebar.jsx";
+import Marquee from "react-fast-marquee";
 
 const useStyles = makeStyles(() => ({
   title: {
@@ -52,7 +53,20 @@ const Header = () => {
               variant="h6"
             >
               Cryptocurrency APP
+              <Marquee
+              gradientColor={[]}
+              
+                style={{
+                  backgroundColor: "transparent",
+                  color: "gray",
+                  paddingLeft: "280px",
+                  paddingRight: "200px",
+                }}
+              >
+                <h6>&nbsp;Current Cryptocurrency Tracking &nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; &nbsp; Güncel Kripto Para Takibi &nbsp;&nbsp;</h6>
+              </Marquee>
             </Typography>
+
             <Select
               variant="outlined"
               labelId="demo-simple-select-label"
@@ -69,7 +83,7 @@ const Header = () => {
               <MenuItem value={"TRY"}>TRY</MenuItem>
               <MenuItem value={"EUR"}>EUR</MenuItem>
             </Select>
-            {user ? <UserSidebar/>  : <AuthModal />}
+            {user ? <UserSidebar /> : <AuthModal />}
           </Toolbar>
         </Container>
       </AppBar>
